@@ -1,2 +1,6 @@
-.exe
-.vscode
+# Игнорировать папку .vscode
+.vscode/
+
+# Игнорировать все файлы с названием main, кроме main.cpp
+main*
+!main.cpp
