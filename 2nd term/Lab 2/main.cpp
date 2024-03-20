@@ -1,17 +1,22 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <fstream>
 
 using namespace std;
 
 int calcTime(string time);
 
 struct Routes {
-    int unsigned number;
+    int number;
     string destination;
     string departureTime;
     string arriveTime;
     int unsigned arriveTime_min;
+
+    void Print() {
+        cout << number << ' ' << destination << ' ' << departureTime << ' ' << arriveTime << endl;
+    }
 };
 
 void createRoutes(Routes *arr, int n, string sities[], int n_sities);
@@ -28,20 +33,29 @@ int main() {
     Routes *routeArr = new Routes[n];
     createRoutes(routeArr, n, sities, numSities);
 
-    // Define prefer arrive time
-    string prefTime;
-    cout << "Enter prefer time (input format: 00:00): ";
-    cin >> prefTime;
+    string path = "routes.txt";
+    ofstream fileOut(path, ofstream::app);
 
-    cout << '\n';
-
-    // Sort routes
-    cout << "Suitable routes: " << endl;
     for (int i = 0; i < n; i++) {
-        if ( routeArr[i].arriveTime_min < calcTime(prefTime) ) {
-            cout << routeArr[i].number << ' ' << routeArr[i].destination << ' ' << routeArr[i].arriveTime << endl;
-        }
+        fileOut.write((char*)&routeArr[i], sizeof(routeArr[i]));
     }
+
+
+
+    // // Define prefer arrive time
+    // string prefTime;
+    // cout << "Enter prefer time (input format: 00:00): ";
+    // cin >> prefTime;
+
+    // cout << '\n';
+
+    // // Sort routes
+    // cout << "Suitable routes: " << endl;
+    // for (int i = 0; i < n; i++) {
+    //     if ( routeArr[i].arriveTime_min < calcTime(prefTime) ) {
+    //         cout << routeArr[i].number << ' ' << routeArr[i].destination << ' ' << routeArr[i].arriveTime << endl;
+    //     }
+    // }
 
     return 0;
 }
