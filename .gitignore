@@ -1,6 +1,8 @@
-# Игнорировать папку .vscode
 .vscode/
+.idea/
+cmake-build-debug/
 
 # Игнорировать все файлы с названием main, кроме main.cpp
+CMakeLists.txt
 main*
 !main.cpp
