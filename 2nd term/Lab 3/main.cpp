@@ -5,7 +5,7 @@ using  namespace std;
 struct Stack{
     int info;
     Stack *next;
-} *top;
+};
 
 Stack *push(Stack *stackTop, int add) {
     Stack *newItem = new Stack;
@@ -15,7 +15,7 @@ Stack *push(Stack *stackTop, int add) {
 }
 
 Stack *deleteItem(Stack *stackTop) {
-    if (stackTop->next == NULL)
+    if (stackTop->next == nullptr)
         return stackTop;
 
     Stack *spt = stackTop;
@@ -26,7 +26,7 @@ Stack *deleteItem(Stack *stackTop) {
 
 void readStack(Stack *stackTop) {
     Stack *currentTop = stackTop;
-    while (currentTop != NULL) {
+    while (currentTop != nullptr) {
         cout << ' ' << currentTop -> info << endl;
         currentTop = currentTop -> next;
     }
@@ -40,10 +40,10 @@ void RevStackAfter(Stack *stackTop) {
 }
 
 void addressSort(Stack *stackTop) {
-    if(stackTop->next->next == NULL)
+    if(stackTop->next->next == nullptr)
         return;
 
-    Stack *spt = NULL, *spm;
+    Stack *spt = nullptr, *spm;
     do {
         for (spm = stackTop; spm->next->next != spt; spm = spm->next) {
             if (spm->next->info > spm->next->next->info)
@@ -54,7 +54,7 @@ void addressSort(Stack *stackTop) {
 }
 
 void sortStack(Stack *stackTop) {
-    Stack *t = NULL, *t1;
+    Stack *t = nullptr, *t1;
     int r;
 
     do {
@@ -76,7 +76,7 @@ void change(Stack *stackTop) {
     int topItem = stackTop->info;
     Stack *currentTop = stackTop;
 
-    while (currentTop->next != NULL) {
+    while (currentTop->next != nullptr) {
         currentTop = currentTop->next;
     }
 
@@ -106,7 +106,7 @@ int main() {
     int choice;
     bool continueLoop = true;
     while (continueLoop) {
-        cout << "1 - Read Stack, 2 - Address Sort, 3 - Values Sort, 4 - Change, 0 - EXIT: ";
+        cout << "1 - Read Stack, 2 - Address Sort, 3 - Values Sort, 4 - Change: ";
         cin >> choice;
         switch (choice) {
             case 1:
@@ -124,7 +124,7 @@ int main() {
             case 4:
                 change(top);
                 break;
-            case 0:
+            default:
                 continueLoop = false;
                 break;
         }
